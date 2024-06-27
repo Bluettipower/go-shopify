@@ -37,35 +37,33 @@ type DraftOrderServiceOp struct {
 
 // DraftOrder represents a shopify draft order
 type DraftOrder struct {
-	ID              int64            `json:"id,omitempty"`
-	OrderID         int64            `json:"order_id,omitempty"`
-	Name            string           `json:"name,omitempty"`
-	Customer        *Customer        `json:"customer,omitempty"`
-	ShippingAddress *Address         `json:"shipping_address,omitempty"`
-	BillingAddress  *Address         `json:"billing_address,omitempty"`
-	Note            string           `json:"note,omitempty"`
-	NoteAttributes  []NoteAttribute  `json:"note_attributes,omitempty"`
-	Email           string           `json:"email,omitempty"`
-	Currency        string           `json:"currency,omitempty"`
-	InvoiceSentAt   *time.Time       `json:"invoice_sent_at,omitempty"`
-	InvoiceURL      string           `json:"invoice_url,omitempty"`
-	LineItems       []LineItem       `json:"line_items,omitempty"`
-	ShippingLine    *ShippingLines   `json:"shipping_line,omitempty"`
-	Tags            string           `json:"tags,omitempty"`
-	TaxLines        []TaxLine        `json:"tax_lines,omitempty"`
-	AppliedDiscount *AppliedDiscount `json:"applied_discount,omitempty"`
-	TaxesIncluded   bool             `json:"taxes_included,omitempty"`
-	TotalTax        string           `json:"total_tax,omitempty"`
-	TaxExempt       *bool            `json:"tax_exempt,omitempty"`
-	TotalPrice      string           `json:"total_price,omitempty"`
-	SubtotalPrice   *decimal.Decimal `json:"subtotal_price,omitempty"`
-	CompletedAt     *time.Time       `json:"completed_at,omitempty"`
-	CreatedAt       *time.Time       `json:"created_at,omitempty"`
-	UpdatedAt       *time.Time       `json:"updated_at,omitempty"`
-	Status          string           `json:"status,omitempty"`
-	Description     string           `json:"description,omitempty"`
-	// only in request to flag using the customer's default address
-	UseCustomerDefaultAddress bool `json:"use_customer_default_address,omitempty"`
+	ID                        int64            `json:"id,omitempty"`
+	OrderID                   int64            `json:"order_id,omitempty"`
+	Name                      string           `json:"name,omitempty"`
+	Customer                  *Customer        `json:"customer,omitempty"`
+	ShippingAddress           *Address         `json:"shipping_address,omitempty"`
+	BillingAddress            *Address         `json:"billing_address,omitempty"`
+	Note                      string           `json:"note,omitempty"`
+	NoteAttributes            []NoteAttribute  `json:"note_attributes,omitempty"`
+	Email                     string           `json:"email,omitempty"`
+	Currency                  string           `json:"currency,omitempty"`
+	InvoiceSentAt             *time.Time       `json:"invoice_sent_at,omitempty"`
+	InvoiceURL                string           `json:"invoice_url,omitempty"`
+	LineItems                 []LineItem       `json:"line_items,omitempty"`
+	ShippingLine              *ShippingLines   `json:"shipping_line,omitempty"`
+	Tags                      string           `json:"tags,omitempty"`
+	TaxLines                  []TaxLine        `json:"tax_lines,omitempty"`
+	AppliedDiscount           *AppliedDiscount `json:"applied_discount,omitempty"`
+	TaxesIncluded             bool             `json:"taxes_included,omitempty"`
+	TotalTax                  string           `json:"total_tax,omitempty"`
+	TaxExempt                 *bool            `json:"tax_exempt,omitempty"`
+	TotalPrice                string           `json:"total_price,omitempty"`
+	SubtotalPrice             *decimal.Decimal `json:"subtotal_price,omitempty"`
+	CompletedAt               *time.Time       `json:"completed_at,omitempty"`
+	CreatedAt                 *time.Time       `json:"created_at,omitempty"`
+	UpdatedAt                 *time.Time       `json:"updated_at,omitempty"`
+	Status                    string           `json:"status,omitempty"`
+	UseCustomerDefaultAddress bool             `json:"use_customer_default_address,omitempty"`
 }
 
 // AppliedDiscount is the discount applied to the line item or the draft order object.
