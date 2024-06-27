@@ -63,6 +63,7 @@ type DraftOrder struct {
 	CreatedAt       *time.Time       `json:"created_at,omitempty"`
 	UpdatedAt       *time.Time       `json:"updated_at,omitempty"`
 	Status          string           `json:"status,omitempty"`
+	Description     string           `json:"description,omitempty"`
 	// only in request to flag using the customer's default address
 	UseCustomerDefaultAddress bool `json:"use_customer_default_address,omitempty"`
 }
