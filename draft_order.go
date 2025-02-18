@@ -41,7 +41,7 @@ type DraftOrder struct {
 	OrderID                      int64            `json:"order_id,omitempty"`
 	Name                         string           `json:"name,omitempty"`
 	Customer                     *Customer        `json:"customer,omitempty"`
-	AllowDiscountCodesInCheckout bool             `json:"allow_discount_codes_in_checkout,omitempty"`
+	AllowDiscountCodesInCheckout *bool            `json:"allow_discount_codes_in_checkout,omitempty"`
 	ShippingAddress              *Address         `json:"shipping_address,omitempty"`
 	BillingAddress               *Address         `json:"billing_address,omitempty"`
 	Note                         string           `json:"note,omitempty"`
