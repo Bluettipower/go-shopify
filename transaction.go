@@ -6,10 +6,10 @@ import "fmt"
 // the Shopify API.
 // See: https://help.shopify.com/api/reference/transaction
 type TransactionService interface {
-	List(int64, interface{}) ([]Transaction, error)
-	Count(int64, interface{}) (int, error)
-	Get(int64, int64, interface{}) (*Transaction, error)
-	Create(int64, Transaction) (*Transaction, error)
+	List(uint64, interface{}) ([]Transaction, error)
+	Count(uint64, interface{}) (int, error)
+	Get(uint64, int64, interface{}) (*Transaction, error)
+	Create(uint64, Transaction) (*Transaction, error)
 }
 
 // TransactionServiceOp handles communication with the transaction related methods of the
