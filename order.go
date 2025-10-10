@@ -338,34 +338,33 @@ type TaxLine struct {
 
 // Transaction 主结构体
 type Transaction struct {
-	ID                              uint64                          `json:"id,omitempty"`
-	Shop                            string                          `json:"shop,omitempty"`
-	Amount                          *decimal.Decimal                `json:"amount,omitempty"`
-	AmountRounding                  string                          `json:"amountRounding,omitempty"`
-	Authorization                   string                          `json:"authorization,omitempty"`
-	AuthorizationExpiresAt          *time.Time                      `json:"authorizationExpiresAt,omitempty"`
-	CreatedAt                       *time.Time                      `json:"created_at,omitempty"`
-	Currency                        string                          `json:"currency,omitempty"`
-	DeviceID                        *int64                          `json:"deviceId,omitempty"`
-	ErrorCode                       string                          `json:"errorCode,omitempty"`
-	ExtendedAuthorizationAttributes ExtendedAuthorizationAttributes `json:"extendedAuthorizationAttributes,omitempty"`
-	Gateway                         string                          `json:"gateway,omitempty"`
-	Kind                            string                          `json:"kind,omitempty"`
-	LocationID                      *LocationID                     `json:"locationId,omitempty"`
-	Message                         string                          `json:"message,omitempty"`
-	OrderID                         int64                           `json:"orderId,omitempty"`
-	PaymentDetails                  *TPaymentDetails                `json:"paymentDetails,omitempty"`
-	ParentID                        *int64                          `json:"parentId,omitempty"`
-	PaymentsRefundAttributes        PaymentsRefundAttributes        `json:"paymentsRefundAttributes,omitempty"`
-	ProcessedAt                     *time.Time                      `json:"processedAt,omitempty"`
-	Receipt                         map[string]interface{}          `json:"receipt,omitempty"`
-	SourceName                      string                          `json:"sourceName,omitempty"`
-	Status                          string                          `json:"status,omitempty"`
-	TotalUnsettledSet               TotalUnsettledSet               `json:"totalUnsettledSet,omitempty"`
-	Test                            bool                            `json:"test,omitempty"`
-	UserID                          *int64                          `json:"userId,omitempty"`
-	CurrencyExchangeAdjustment      CurrencyExchangeAdjustment      `json:"currencyExchangeAdjustment,omitempty"`
-	ManualPaymentGateway            bool                            `json:"manualPaymentGateway,omitempty"`
+	ID                              uint64                           `json:"id,omitempty"`
+	Amount                          *decimal.Decimal                 `json:"amount,omitempty"`
+	AmountRounding                  string                           `json:"amount_rounding,omitempty"`
+	Authorization                   string                           `json:"authorization,omitempty"`
+	AuthorizationExpiresAt          *time.Time                       `json:"authorization_expires_at,omitempty"`
+	CreatedAt                       *time.Time                       `json:"created_at,omitempty"`
+	Currency                        string                           `json:"currency,omitempty"`
+	DeviceID                        *int64                           `json:"device_id,omitempty"`
+	ErrorCode                       string                           `json:"error_code,omitempty"`
+	ExtendedAuthorizationAttributes *ExtendedAuthorizationAttributes `json:"extended_authorization_attributes,omitempty"`
+	Gateway                         string                           `json:"gateway,omitempty"`
+	Kind                            string                           `json:"kind,omitempty"`
+	LocationID                      *LocationID                      `json:"location_id,omitempty"`
+	Message                         string                           `json:"message,omitempty"`
+	OrderID                         int64                            `json:"order_id,omitempty"`
+	PaymentDetails                  *TPaymentDetails                 `json:"payment_details,omitempty"`
+	ParentID                        *int64                           `json:"parent_id,omitempty"`
+	PaymentsRefundAttributes        *PaymentsRefundAttributes        `json:"payments_refund_attributes,omitempty"`
+	ProcessedAt                     *time.Time                       `json:"processed_at,omitempty"`
+	Receipt                         map[string]interface{}           `json:"receipt,omitempty"`
+	SourceName                      string                           `json:"source_name,omitempty"`
+	Status                          string                           `json:"status,omitempty"`
+	TotalUnsettledSet               *TotalUnsettledSet               `json:"total_unsettled_set,omitempty"`
+	Test                            bool                             `json:"test,omitempty"`
+	UserID                          *int64                           `json:"user_id,omitempty"`
+	CurrencyExchangeAdjustment      *CurrencyExchangeAdjustment      `json:"currency_exchange_adjustment,omitempty"`
+	ManualPaymentGateway            bool                             `json:"manual_payment_gateway,omitempty"`
 }
 
 // 子结构体
