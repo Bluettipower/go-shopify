@@ -369,58 +369,58 @@ type Transaction struct {
 
 // 子结构体
 type ExtendedAuthorizationAttributes struct {
-	StandardAuthorizationExpiresAt time.Time `bson:"standardAuthorizationExpiresAt,omitempty" json:"standardAuthorizationExpiresAt,omitempty"`
-	ExtendedAuthorizationExpiresAt time.Time `bson:"extendedAuthorizationExpiresAt,omitempty" json:"extendedAuthorizationExpiresAt,omitempty"`
+	StandardAuthorizationExpiresAt time.Time `json:"standard_authorization_expires_at,omitempty"`
+	ExtendedAuthorizationExpiresAt time.Time `json:"extended_authorization_expires_at,omitempty"`
 }
 
 type LocationID struct {
-	ID int64 `bson:"id,omitempty" json:"id,omitempty"`
+	ID int64 `json:"id,omitempty"`
 }
 
 type TPaymentDetails struct {
-	CreditCardBin             string          `bson:"creditCardBin,omitempty" json:"creditCardBin,omitempty"`
-	AvsResultCode             string          `bson:"avsResultCode,omitempty" json:"avsResultCode,omitempty"`
-	CvvResultCode             string          `bson:"cvvResultCode,omitempty" json:"cvvResultCode,omitempty"`
-	CreditCardNumber          string          `bson:"creditCardNumber,omitempty" json:"creditCardNumber,omitempty"`
-	CreditCardCompany         string          `bson:"creditCardCompany,omitempty" json:"creditCardCompany,omitempty"`
-	CreditCardName            string          `bson:"creditCardName,omitempty" json:"creditCardName,omitempty"`
-	CreditCardWallet          string          `bson:"creditCardWallet,omitempty" json:"creditCardWallet,omitempty"`
-	CreditCardExpirationMonth int             `bson:"creditCardExpirationMonth,omitempty" json:"creditCardExpirationMonth,omitempty"`
-	CreditCardExpirationYear  int             `bson:"creditCardExpirationYear,omitempty" json:"creditCardExpirationYear,omitempty"`
-	BuyerActionInfo           BuyerActionInfo `bson:"buyerActionInfo,omitempty" json:"buyerActionInfo,omitempty"`
-	PaymentMethodName         string          `bson:"paymentMethodName,omitempty" json:"paymentMethodName,omitempty"`
+	CreditCardBin             string          `json:"credit_card_bin,omitempty"`
+	AvsResultCode             string          `json:"avs_result_code,omitempty"`
+	CvvResultCode             string          `json:"cvv_result_code,omitempty"`
+	CreditCardNumber          string          `json:"credit_card_number,omitempty"`
+	CreditCardCompany         string          `json:"credit_card_company,omitempty"`
+	CreditCardName            string          `json:"credit_card_name,omitempty"`
+	CreditCardWallet          string          `json:"credit_card_wallet,omitempty"`
+	CreditCardExpirationMonth int             `json:"credit_card_expiration_month,omitempty"`
+	CreditCardExpirationYear  int             `json:"credit_card_expiration_year,omitempty"`
+	BuyerActionInfo           BuyerActionInfo `json:"buyer_action_info,omitempty"`
+	PaymentMethodName         string          `json:"payment_method_name,omitempty"`
 }
 
 type BuyerActionInfo struct {
-	Multibanco Multibanco `bson:"multibanco,omitempty" json:"multibanco,omitempty"`
+	Multibanco Multibanco `json:"multibanco,omitempty"`
 }
 
 type Multibanco struct {
-	Entity    string `bson:"entity,omitempty" json:"entity,omitempty"`
-	Reference string `bson:"reference,omitempty" json:"reference,omitempty"`
+	Entity    string `json:"entity,omitempty"`
+	Reference string `json:"reference,omitempty"`
 }
 
 type PaymentsRefundAttributes struct {
-	Status                  string `bson:"status,omitempty" json:"status,omitempty"`
-	AcquirerReferenceNumber string `bson:"acquirerReferenceNumber,omitempty" json:"acquirerReferenceNumber,omitempty"`
+	Status                  string `json:"status,omitempty"`
+	AcquirerReferenceNumber string `json:"acquirer_reference_number,omitempty"`
 }
 
 type TotalUnsettledSet struct {
-	PresentmentMoney Money `bson:"presentmentMoney,omitempty" json:"presentmentMoney,omitempty"`
-	ShopMoney        Money `bson:"shopMoney,omitempty" json:"shopMoney,omitempty"`
+	PresentmentMoney Money `json:"presentment_money,omitempty"`
+	ShopMoney        Money `json:"shop_money,omitempty"`
 }
 
 type Money struct {
-	Amount   string `bson:"amount,omitempty" json:"amount,omitempty"`
-	Currency string `bson:"currency,omitempty" json:"currency,omitempty"`
+	Amount   string `json:"amount,omitempty"`
+	Currency string `json:"currency,omitempty"`
 }
 
 type CurrencyExchangeAdjustment struct {
-	ID             int64  `bson:"id,omitempty" json:"id,omitempty"`
-	Adjustment     string `bson:"adjustment,omitempty" json:"adjustment,omitempty"`
-	OriginalAmount string `bson:"originalAmount,omitempty" json:"originalAmount,omitempty"`
-	FinalAmount    string `bson:"finalAmount,omitempty" json:"finalAmount,omitempty"`
-	Currency       string `bson:"currency,omitempty" json:"currency,omitempty"`
+	ID             int64  `json:"id,omitempty"`
+	Adjustment     string `json:"adjustment,omitempty"`
+	OriginalAmount string `json:"original_amount,omitempty"`
+	FinalAmount    string `json:"final_amount,omitempty"`
+	Currency       string `json:"currency,omitempty"`
 }
 
 type ClientDetails struct {
