@@ -336,26 +336,92 @@ type TaxLine struct {
 	Rate  *decimal.Decimal `json:"rate,omitempty"`
 }
 
+// Transaction 主结构体
 type Transaction struct {
-	ID             int64            `json:"id,omitempty"`
-	OrderID        int64            `json:"order_id,omitempty"`
-	Amount         *decimal.Decimal `json:"amount,omitempty"`
-	Kind           string           `json:"kind,omitempty"`
-	Gateway        string           `json:"gateway,omitempty"`
-	Status         string           `json:"status,omitempty"`
-	Message        string           `json:"message,omitempty"`
-	CreatedAt      *time.Time       `json:"created_at,omitempty"`
-	Test           bool             `json:"test,omitempty"`
-	Authorization  string           `json:"authorization,omitempty"`
-	Currency       string           `json:"currency,omitempty"`
-	LocationID     *int64           `json:"location_id,omitempty"`
-	UserID         *int64           `json:"user_id,omitempty"`
-	ParentID       *int64           `json:"parent_id,omitempty"`
-	DeviceID       *int64           `json:"device_id,omitempty"`
-	ErrorCode      string           `json:"error_code,omitempty"`
-	SourceName     string           `json:"source_name,omitempty"`
-	Source         string           `json:"source,omitempty"`
-	PaymentDetails *PaymentDetails  `json:"payment_details,omitempty"`
+	ID                              uint64                          `json:"id,omitempty"`
+	Shop                            string                          `json:"shop,omitempty"`
+	Amount                          *decimal.Decimal                `json:"amount,omitempty"`
+	AmountRounding                  string                          `json:"amountRounding,omitempty"`
+	Authorization                   string                          `json:"authorization,omitempty"`
+	AuthorizationExpiresAt          *time.Time                      `json:"authorizationExpiresAt,omitempty"`
+	CreatedAt                       *time.Time                      `json:"created_at,omitempty"`
+	Currency                        string                          `json:"currency,omitempty"`
+	DeviceID                        *int64                          `json:"deviceId,omitempty"`
+	ErrorCode                       string                          `json:"errorCode,omitempty"`
+	ExtendedAuthorizationAttributes ExtendedAuthorizationAttributes `json:"extendedAuthorizationAttributes,omitempty"`
+	Gateway                         string                          `json:"gateway,omitempty"`
+	Kind                            string                          `json:"kind,omitempty"`
+	LocationID                      *LocationID                     `json:"locationId,omitempty"`
+	Message                         string                          `json:"message,omitempty"`
+	OrderID                         int64                           `json:"orderId,omitempty"`
+	PaymentDetails                  *TPaymentDetails                `json:"paymentDetails,omitempty"`
+	ParentID                        *int64                          `json:"parentId,omitempty"`
+	PaymentsRefundAttributes        PaymentsRefundAttributes        `json:"paymentsRefundAttributes,omitempty"`
+	ProcessedAt                     *time.Time                      `json:"processedAt,omitempty"`
+	Receipt                         map[string]interface{}          `json:"receipt,omitempty"`
+	SourceName                      string                          `json:"sourceName,omitempty"`
+	Status                          string                          `json:"status,omitempty"`
+	TotalUnsettledSet               TotalUnsettledSet               `json:"totalUnsettledSet,omitempty"`
+	Test                            bool                            `json:"test,omitempty"`
+	UserID                          *int64                          `json:"userId,omitempty"`
+	CurrencyExchangeAdjustment      CurrencyExchangeAdjustment      `json:"currencyExchangeAdjustment,omitempty"`
+	ManualPaymentGateway            bool                            `json:"manualPaymentGateway,omitempty"`
+}
+
+// 子结构体
+type ExtendedAuthorizationAttributes struct {
+	StandardAuthorizationExpiresAt time.Time `bson:"standardAuthorizationExpiresAt,omitempty" json:"standardAuthorizationExpiresAt,omitempty"`
+	ExtendedAuthorizationExpiresAt time.Time `bson:"extendedAuthorizationExpiresAt,omitempty" json:"extendedAuthorizationExpiresAt,omitempty"`
+}
+
+type LocationID struct {
+	ID int64 `bson:"id,omitempty" json:"id,omitempty"`
+}
+
+type TPaymentDetails struct {
+	CreditCardBin             string          `bson:"creditCardBin,omitempty" json:"creditCardBin,omitempty"`
+	AvsResultCode             string          `bson:"avsResultCode,omitempty" json:"avsResultCode,omitempty"`
+	CvvResultCode             string          `bson:"cvvResultCode,omitempty" json:"cvvResultCode,omitempty"`
+	CreditCardNumber          string          `bson:"creditCardNumber,omitempty" json:"creditCardNumber,omitempty"`
+	CreditCardCompany         string          `bson:"creditCardCompany,omitempty" json:"creditCardCompany,omitempty"`
+	CreditCardName            string          `bson:"creditCardName,omitempty" json:"creditCardName,omitempty"`
+	CreditCardWallet          string          `bson:"creditCardWallet,omitempty" json:"creditCardWallet,omitempty"`
+	CreditCardExpirationMonth int             `bson:"creditCardExpirationMonth,omitempty" json:"creditCardExpirationMonth,omitempty"`
+	CreditCardExpirationYear  int             `bson:"creditCardExpirationYear,omitempty" json:"creditCardExpirationYear,omitempty"`
+	BuyerActionInfo           BuyerActionInfo `bson:"buyerActionInfo,omitempty" json:"buyerActionInfo,omitempty"`
+	PaymentMethodName         string          `bson:"paymentMethodName,omitempty" json:"paymentMethodName,omitempty"`
+}
+
+type BuyerActionInfo struct {
+	Multibanco Multibanco `bson:"multibanco,omitempty" json:"multibanco,omitempty"`
+}
+
+type Multibanco struct {
+	Entity    string `bson:"entity,omitempty" json:"entity,omitempty"`
+	Reference string `bson:"reference,omitempty" json:"reference,omitempty"`
+}
+
+type PaymentsRefundAttributes struct {
+	Status                  string `bson:"status,omitempty" json:"status,omitempty"`
+	AcquirerReferenceNumber string `bson:"acquirerReferenceNumber,omitempty" json:"acquirerReferenceNumber,omitempty"`
+}
+
+type TotalUnsettledSet struct {
+	PresentmentMoney Money `bson:"presentmentMoney,omitempty" json:"presentmentMoney,omitempty"`
+	ShopMoney        Money `bson:"shopMoney,omitempty" json:"shopMoney,omitempty"`
+}
+
+type Money struct {
+	Amount   string `bson:"amount,omitempty" json:"amount,omitempty"`
+	Currency string `bson:"currency,omitempty" json:"currency,omitempty"`
+}
+
+type CurrencyExchangeAdjustment struct {
+	ID             int64  `bson:"id,omitempty" json:"id,omitempty"`
+	Adjustment     string `bson:"adjustment,omitempty" json:"adjustment,omitempty"`
+	OriginalAmount string `bson:"originalAmount,omitempty" json:"originalAmount,omitempty"`
+	FinalAmount    string `bson:"finalAmount,omitempty" json:"finalAmount,omitempty"`
+	Currency       string `bson:"currency,omitempty" json:"currency,omitempty"`
 }
 
 type ClientDetails struct {
