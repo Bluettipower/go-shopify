@@ -8,7 +8,7 @@ import "fmt"
 type TransactionService interface {
 	List(uint64, interface{}) ([]Transaction, error)
 	Count(uint64, interface{}) (int, error)
-	Get(uint64, int64, interface{}) (*Transaction, error)
+	Get(uint64, uint64, interface{}) (*Transaction, error)
 	Create(uint64, Transaction) (*Transaction, error)
 }
 
@@ -29,7 +29,7 @@ type TransactionsResource struct {
 }
 
 // List transactions
-func (s *TransactionServiceOp) List(orderID int64, options interface{}) ([]Transaction, error) {
+func (s *TransactionServiceOp) List(orderID uint64, options interface{}) ([]Transaction, error) {
 	path := fmt.Sprintf("%s/%d/transactions.json", ordersBasePath, orderID)
 	resource := new(TransactionsResource)
 	err := s.client.Get(path, resource, options)
@@ -37,13 +37,13 @@ func (s *TransactionServiceOp) List(orderID int64, options interface{}) ([]Trans
 }
 
 // Count transactions
-func (s *TransactionServiceOp) Count(orderID int64, options interface{}) (int, error) {
+func (s *TransactionServiceOp) Count(orderID uint64, options interface{}) (int, error) {
 	path := fmt.Sprintf("%s/%d/transactions/count.json", ordersBasePath, orderID)
 	return s.client.Count(path, options)
 }
 
 // Get individual transaction
-func (s *TransactionServiceOp) Get(orderID int64, transactionID int64, options interface{}) (*Transaction, error) {
+func (s *TransactionServiceOp) Get(orderID uint64, transactionID uint64, options interface{}) (*Transaction, error) {
 	path := fmt.Sprintf("%s/%d/transactions/%d.json", ordersBasePath, orderID, transactionID)
 	resource := new(TransactionResource)
 	err := s.client.Get(path, resource, options)
@@ -51,7 +51,7 @@ func (s *TransactionServiceOp) Get(orderID int64, transactionID int64, options i
 }
 
 // Create a new transaction
-func (s *TransactionServiceOp) Create(orderID int64, transaction Transaction) (*Transaction, error) {
+func (s *TransactionServiceOp) Create(orderID uint64, transaction Transaction) (*Transaction, error) {
 	path := fmt.Sprintf("%s/%d/transactions.json", ordersBasePath, orderID)
 	wrappedData := TransactionResource{Transaction: &transaction}
 	resource := new(TransactionResource)
